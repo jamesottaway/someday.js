@@ -14,5 +14,10 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/jamesottaway/someday.js/issues"
+  },
+  "devDependencies" : {
+    "mocha" : "*",
+    "should" : "*",
+    "underscore" : "*"
   }
 }

@@ -25,15 +25,18 @@ someday.prototype.do = function(callback) {
 someday.prototype.go = function() {
 	if (!this.start) { this.start = new Date().getTime() }
 	if (this.condition()) {
-		this.callback();
+		var cb = this.callback;
+		this.reset();
+		cb();
 	} else {
 		if (this.isTimedOut()) {
+			var cb = this.callback;
 			this.reset();
-			console.error('Timed out on [' + this.name + '] after [' + (this.timeout * 1000) + '] seconds');
-			throw new Error('Timed out');
+			cb(new Error('Timed out'));
+		} else {
+			var that = this;
+			setTimeout(function() { that.go() }, this.delay * 1000);
 		}
-		var that = this;
-		setTimeout(function() { that.go() }, this.delay * 1000);
 	}
 }
 
