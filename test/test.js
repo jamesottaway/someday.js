@@ -1,4 +1,4 @@
-var Someday = require('../index');
+var Someday = require('../someday');
 var helper = require('./helper');
 var should = require('should');
 var _ = require('underscore');

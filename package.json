@@ -2,7 +2,7 @@
   "name": "someday",
   "version": "0.0.1",
   "description": "Only invoke your callback when a specific condition is met.",
-  "main": "index.js",
+  "main": "someday.js",
   "scripts": {
     "test": "mocha"
   },
