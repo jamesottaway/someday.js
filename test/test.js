@@ -24,20 +24,6 @@ describe('someday', function() {
     });
   });
 
-  describe('opts', function() {
-    it('accepts a timeout', function() {
-      var expected = Math.random();
-      var someday = new Someday({ timeout: expected });
-      someday.timeout.should.equal(expected);
-    });
-
-    it('accepts a delay', function() {
-      var expected = Math.random();
-      var someday = new Someday({ delay: expected });
-      someday.delay.should.equal(expected);
-    });
-  });
-
   describe('timeout', function() {
     it('defaults to 30 seconds', function() {
       new Someday().timeout.should.equal(30);
@@ -60,7 +46,6 @@ describe('someday', function() {
     });
 
     it('passes an error to the callback', function(done) {
-      var error;
       var someday = new Someday({ delay: 0.001, timeout: 0.001 });
       someday.when(helper.never).do(function(error) {
         error.should.be.instanceOf(Error);
@@ -88,7 +73,7 @@ describe('someday', function() {
       }).do(function() {
         var tick_pairs = _.initial(_.zip(ticks, _.tail(ticks)));
         _.map(tick_pairs, function(tick_pair) {
-          (tick_pair[1] - tick_pair[0]).should.be.approximately(11],2);
+          (tick_pair[1] - tick_pair[0]).should.be.approximately(11,2);
         })
         done();
       });
